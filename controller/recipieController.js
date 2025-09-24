@@ -32,3 +32,19 @@ exports.getARecipie = async(req,res)=>{
         res.status(401).json("error is" +error)
     }
 }
+
+//get related receipie
+
+exports.getRelatedRecipie = async(req,res)=>{
+
+    console.log("Inside get related Recipie");
+       const cuisine = req.query.cuisine
+    try { 
+        const RelatedRecipie = await recipies.find({cuisine})
+        res.status(200).json(RelatedRecipie)
+    }
+     catch (error)
+      {
+        res.status(401).json("error is" +error)
+    }
+}
