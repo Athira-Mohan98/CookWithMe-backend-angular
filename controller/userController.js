@@ -51,3 +51,30 @@ exports.login = async (req, res) => {
         res.status(401).json("error" + error)
     }
 }
+
+exports.updateProfile=async(req,res)=>{
+    const {profilePic} = req.body
+    const userId = req.payload.userId
+    try {
+        const existingUser = await users.findByIdAndUpdate({_id:userId})
+    existingUser.profilePic=profilePic
+    await existingUser.save()
+    res.status(200).json(existingUser)
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+exports.getallUsers = async (req, res) => {
+    console.log("inside get all users");
+    try {
+        const allusers = await users.find()
+    
+        res.status(200).json(allusers)
+
+    } catch (error) {
+        res.status(402).json(error)
+    }
+}
+

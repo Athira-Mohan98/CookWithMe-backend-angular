@@ -20,6 +20,11 @@ router.get('/api/getsavedrecipies',jwtMiddleware,SavedRecipieController.getAllSa
 router.delete('/api/deleterecipie/:id',jwtMiddleware,SavedRecipieController.deletesavedRecipie)
 router.post('/api/downloadedRecipies/:id',jwtMiddleware,downloadedRecipieController.AdddownloadRecipie)
 router.get('/api/getdownloadedRecipies',jwtMiddleware,downloadedRecipieController.getdownloadedRecipie)
-
+router.post('/api/userProfile/',jwtMiddleware,userController.updateProfile)
+router.get('/api/getallusers',jwtMiddleware,userController.getallUsers)
+router.get('/api/getalldownloads',jwtMiddleware,recipieController.getalldownloads)
+router.post('/api/admin/addrecipie',jwtMiddleware,recipieController.addRecipie)
+router.put('/api/admin/updateRecipie/:id',jwtMiddleware,recipieController.updateRecipie)
+router.put('/api/admin/deleteRecipie/:id',jwtMiddleware,recipieController.DeleteRecipie)
 
 module.exports = router
